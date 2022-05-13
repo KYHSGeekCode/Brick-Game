@@ -1,15 +1,15 @@
-# Project: º®µ¹±ú±â
+# Project: ë²½ëŒê¹¨ê¸°
 # Makefile created by Dev-C++ 5.11
 
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o "ÀÇ»ç\ ÄÚµå.o"
-LINKOBJ  = main.o "ÀÇ»ç ÄÚµå.o"
-LIBS     = -L"D:/¾çÇö¼­/Dev-Cpp/MinGW64/lib" -L"D:/¾çÇö¼­/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows
-INCS     = -I"D:/¾çÇö¼­/Dev-Cpp/MinGW64/include" -I"D:/¾çÇö¼­/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/¾çÇö¼­/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
-CXXINCS  = -I"D:/¾çÇö¼­/Dev-Cpp/MinGW64/include" -I"D:/¾çÇö¼­/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/¾çÇö¼­/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/¾çÇö¼­/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
-BIN      = º®µ¹±ú±â.exe
+OBJ      = main.o "ì˜ì‚¬\ ì½”ë“œ.o"
+LINKOBJ  = main.o "ì˜ì‚¬ ì½”ë“œ.o"
+LIBS     = -L"D:/ì–‘í˜„ì„œ/Dev-Cpp/MinGW64/lib" -L"D:/ì–‘í˜„ì„œ/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows
+INCS     = -I"D:/ì–‘í˜„ì„œ/Dev-Cpp/MinGW64/include" -I"D:/ì–‘í˜„ì„œ/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/ì–‘í˜„ì„œ/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/ì–‘í˜„ì„œ/Dev-Cpp/MinGW64/include" -I"D:/ì–‘í˜„ì„œ/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/ì–‘í˜„ì„œ/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/ì–‘í˜„ì„œ/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = ë²½ëŒê¹¨ê¸°.exe
 CXXFLAGS = $(CXXINCS) 
 CFLAGS   = $(INCS) 
 RM       = rm.exe -f
@@ -27,5 +27,5 @@ $(BIN): $(OBJ)
 main.o: main.cpp
 	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
 
-"ÀÇ»ç\ ÄÚµå.o": ÀÇ»ç\ ÄÚµå.cpp
-	$(CPP) -c "ÀÇ»ç ÄÚµå.cpp" -o "ÀÇ»ç ÄÚµå.o" $(CXXFLAGS)
+"ì˜ì‚¬\ ì½”ë“œ.o": ì˜ì‚¬\ ì½”ë“œ.cpp
+	$(CPP) -c "ì˜ì‚¬ ì½”ë“œ.cpp" -o "ì˜ì‚¬ ì½”ë“œ.o" $(CXXFLAGS)

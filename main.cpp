@@ -44,7 +44,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
     hwnd = CreateWindowEx (
            0,                   /* Extended possibilites for variation */
            szClassName,         /* Classname */
-           TEXT("½º¿ÍÀÌÇÁ º®µ¹±ú±â pc¹öÀü"),       /* Title Text */
+           TEXT("ìŠ¤ì™€ì´í”„ ë²½ëŒê¹¨ê¸° pcë²„ì „"),       /* Title Text */
            WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX, /*  window */
            CW_USEDEFAULT,       /* Windows decides the position */
            CW_USEDEFAULT,       /* where the window ends up on the screen */
@@ -59,23 +59,23 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
     /* Make the window visible on the screen */
     ShowWindow (hwnd, nFunsterStil);
     
-    /* Run the message loop. It will run until GetMessage() returns 0 *///PeakMessage ¿ä¸Á 
+    /* Run the message loop. It will run until GetMessage() returns 0 *///PeakMessage ìš”ë§ 
     #if 0
 	//#ifdef NOREST
 	while( WM_QUIT != msg.message ) 
 	{ 
-      // ¸Ş¼¼ÁöÅ¥¿¡ ¸Ş¼¼Áö°¡ ÀÖ´ÂÁö °Ë»çÇÑ´Ù. 
-      // ¸Ş¼¼Áö°¡ ÀÖ°Ç,¾ø°Ç ±×³É ¸®ÅÏÇÑ´Ù. 
+      // ë©”ì„¸ì§€íì— ë©”ì„¸ì§€ê°€ ìˆëŠ”ì§€ ê²€ì‚¬í•œë‹¤. 
+      // ë©”ì„¸ì§€ê°€ ìˆê±´,ì—†ê±´ ê·¸ëƒ¥ ë¦¬í„´í•œë‹¤. 
       if(PeekMessage(&msg,NULL,0,0,PM_NOREMOVE)) 
       { 
-            //¸Ş¼¼Áö Å¥¿¡¼­ ¸Ş¼¼Áö¸¦ °¡Á®¿Â´Ù. 
+            //ë©”ì„¸ì§€ íì—ì„œ ë©”ì„¸ì§€ë¥¼ ê°€ì ¸ì˜¨ë‹¤. 
             GetMessage(&msg,NULL,0,0); 
             TranslateMessage(&msg); 
             DispatchMessage(&msg); 
       } 
       else 
       { 
-            //¸Ş¼¼Áö°¡ ¾ø´Ù¸é °ÔÀÓ·çÇÁ¸¦ µ¹¸°´Ù.
+            //ë©”ì„¸ì§€ê°€ ì—†ë‹¤ë©´ ê²Œì„ë£¨í”„ë¥¼ ëŒë¦°ë‹¤.
 			//if(bflying==TRUE) 
             //	GameLoop(); 
       } 
@@ -131,12 +131,12 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
         case WM_CREATE:
         	{
         		g_hwnd=hwnd;
-        		SetRect(&crt,0,0,SCRN_X,SCRN_Y);		//Å©±â º¯°æ ±İÁö¸¦ À§ÇØ 
+        		SetRect(&crt,0,0,SCRN_X,SCRN_Y);		//í¬ê¸° ë³€ê²½ ê¸ˆì§€ë¥¼ ìœ„í•´ 
 				AdjustWindowRect(&crt,WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,FALSE);
 				SetWindowPos(hwnd,NULL,0,0,crt.right-crt.left,crt.bottom-crt.top,SWP_NOMOVE | SWP_NOZORDER);
-				//¸®¼Ò½º¸¦ ¾ò¾î¿Â´Ù.
-				//ÇÊ¿ä ¾ø´Ù. MCISendStringÇÒ °ÍÀÌ±â ¶§¹®¿¡!!
-				//ºê·¯½Ã ¹Ì¸® »ı¼º
+				//ë¦¬ì†ŒìŠ¤ë¥¼ ì–»ì–´ì˜¨ë‹¤.
+				//í•„ìš” ì—†ë‹¤. MCISendStringí•  ê²ƒì´ê¸° ë•Œë¬¸ì—!!
+				//ë¸ŒëŸ¬ì‹œ ë¯¸ë¦¬ ìƒì„±
 				RedBrush=CreateSolidBrush(RGB(0xFF,32,0));
 				BlueBrush=CreateSolidBrush(RGB(0,128,255));
 				GreenBrush=CreateSolidBrush(RGB(0,255,32));
@@ -153,7 +153,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 				switch(state)
 				{
 					case UNSTARTED:
-						//°ÔÀÓ½ÃÀÛ ¹öÆ°Àº UPÃ³¸®±â·Î ÀÌµ¿ 
+						//ê²Œì„ì‹œì‘ ë²„íŠ¼ì€ UPì²˜ë¦¬ê¸°ë¡œ ì´ë™ 
 						if(RectContains(&EndBtnRect,mouseX,mouseY))
 						{
 							//MessageBox(hwnd,TEXT("Exit?"),TEXT("NOTIFY"),MB_OK);
@@ -172,13 +172,13 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 							return 0;
 						}
 						if(state==SIMULATING)return 0;
-						//¹ß»ç ÁØºñ
+						//ë°œì‚¬ ì¤€ë¹„
 						bReadyShoot=TRUE;
 						downMouseX=mouseX;
 						downMouseY=mouseY;
 						break;
 					case PAUSED:
-						//Àç°³, Àç½ÃÀÛ, Á¾·á ¹öÆ° Ã³¸®
+						//ì¬ê°œ, ì¬ì‹œì‘, ì¢…ë£Œ ë²„íŠ¼ ì²˜ë¦¬
 						if(RectContains(&ResumeBtnRect,mouseX,mouseY))
 						{
 							state=PLAYING;
@@ -199,7 +199,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 						}
 						break;
 					case GAMEOVER:
-						//Àç½ÃÀÛ, Á¾·á ¹öÆ° Ã³¸®
+						//ì¬ì‹œì‘, ì¢…ë£Œ ë²„íŠ¼ ì²˜ë¦¬
 						if(RectContains(&StartBtnRect,mouseX,mouseY))
 						{
 							state=PLAYING;
@@ -224,14 +224,14 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 				switch(state)
 				{
 					case PLAYING:
-						//¹ß»ç
+						//ë°œì‚¬
 						bReadyShoot=FALSE;
 						ShootBalls(readyShootdX,readyShootdY);
 						break;
 					case UNSTARTED: 
 						if(RectContains(&StartBtnRect,mouseX,mouseY))
 						{
-							//°ÔÀÓ½ÃÀÛ 
+							//ê²Œì„ì‹œì‘ 
 							state=PLAYING; 
 							InitGame();
 						}
@@ -241,7 +241,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 			break;
 		case WM_RBUTTONDOWN:
 			{
-				//¹ß»ç ÁØºñ Ãë¼Ò
+				//ë°œì‚¬ ì¤€ë¹„ ì·¨ì†Œ
 				bReadyShoot=FALSE;
 			}
 			break;
@@ -252,7 +252,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 					case PLAYING:
 						if(bReadyShoot==TRUE)
 						{
-							//¹ß»ç °¢µµ Àç°è»ê
+							//ë°œì‚¬ ê°ë„ ì¬ê³„ì‚°
 							mouseX=LOWORD(lParam);
 							mouseY=HIWORD(lParam);
 							readyShootdX=mouseX-downMouseX;
@@ -260,7 +260,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 							InvalidateRect(hwnd,NULL,TRUE);
 						}
 					default:
-						// ¹öÆ° ÀÖ´Â °æ¿ì¿¡´Â ¹öÆ° ÇÏÀÌ¶óÀÌÆ® Ã³¸® °¡´É. 
+						// ë²„íŠ¼ ìˆëŠ” ê²½ìš°ì—ëŠ” ë²„íŠ¼ í•˜ì´ë¼ì´íŠ¸ ì²˜ë¦¬ ê°€ëŠ¥. 
 						break; 
 				}
 			}
@@ -296,7 +296,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 				 		FillRect(hdc,&PauseBtnRect,CarrotBrush);
 				 		break;
 				 	case PLAYING:
-				 		//°ø Á¶ÁØ¼± Ç¥½Ã
+				 		//ê³µ ì¡°ì¤€ì„  í‘œì‹œ
 						MoveToEx(hdc,downMouseX,downMouseY,NULL);
 						LineTo(hdc,mouseX,mouseY); 
 				 		FillRect(hdc,&PauseBtnRect,CarrotBrush);
@@ -327,8 +327,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 				switch(state)
 				{
 					case SIMULATING:
-						//»óÅÂ ¾÷µ¥ÀÌÆ®
-						//´õºí ¹öÆÛ¿¡ ±×¸². (WM_PAINT¿¡¼­ ÇØµµ µÊ)
+						//ìƒíƒœ ì—…ë°ì´íŠ¸
+						//ë”ë¸” ë²„í¼ì— ê·¸ë¦¼. (WM_PAINTì—ì„œ í•´ë„ ë¨)
 						GameLoop();
 						break;
 					default:
@@ -350,11 +350,11 @@ int newballs;
 int level;
 int blocks[BLOCK_COLUMNS][BLOCK_ROWS];
 BOOLEAN bFlying;
-Ball leader;	//°¡Àå ¸ÕÀú ¶³¾îÁö´Â °ø
+Ball leader;	//ê°€ì¥ ë¨¼ì € ë–¨ì–´ì§€ëŠ” ê³µ
 int group_x; 
 std::vector<Ball> balls;
 
-void InitGame()    //¿ÏÀü Ã³À½ ½ÃÀÛÇÒ ¶§ (Start Button Å¬¸¯ ½Ã) 
+void InitGame()    //ì™„ì „ ì²˜ìŒ ì‹œì‘í•  ë•Œ (Start Button í´ë¦­ ì‹œ) 
 {
      Ball ballfirst=Ball(rand()%SCRN_X);
      LOG("made ballfirst",0)
@@ -367,53 +367,53 @@ void InitGame()    //¿ÏÀü Ã³À½ ½ÃÀÛÇÒ ¶§ (Start Button Å¬¸¯ ½Ã)
      level=0;
      leader=Ball();
      LOG("Made New leader",0)
-     LOG("ballfirst ´ëÀÔ",0)
+     LOG("ballfirst ëŒ€ì…",0)
      leader=ballfirst;
      NewStage();
      LOG("End of InitGame",0)
 }
 
 #include <math.h>
-void NewStage()		//»õ·Î¿î ½ºÅ×ÀÌÁö ÁøÀÔ 
+void NewStage()		//ìƒˆë¡œìš´ ìŠ¤í…Œì´ì§€ ì§„ì… 
 {
 	LOG("NEwStage",0)
-	bFlying=FALSE;	//½Ã¹Ä·¹ÀÌ¼Ç ÁßÀÎ°¡? 
-	level++;			//level=score ÀÌ´Ù. 
+	bFlying=FALSE;	//ì‹œë®¬ë ˆì´ì…˜ ì¤‘ì¸ê°€? 
+	level++;			//level=score ì´ë‹¤. 
 	for(int i=BLOCK_ROWS-2; i<=0;i--)
 	{
 		for(int j=0;j<BLOCK_COLUMNS;j++)
 		{
-			//¾Æ·¡·Î ºí·ÏÀ» ÇÑ Ä­¾¿ ³»¸°´Ù.
+			//ì•„ë˜ë¡œ ë¸”ë¡ì„ í•œ ì¹¸ì”© ë‚´ë¦°ë‹¤.
 			blocks[j][i+1]=blocks[j][i];
 			if(i+1==BLOCK_ROWS&&blocks[j][i+1]>0)
 			{
-				//°ÔÀÓ ¿À¹ö
+				//ê²Œì„ ì˜¤ë²„
 				GameOver(); 
 			}
-			if(i+1==BLOCK_ROWS&&blocks[j][i+1]==BLOCK_ADDBALL)	//°ø Ãß°¡ Item
+			if(i+1==BLOCK_ROWS&&blocks[j][i+1]==BLOCK_ADDBALL)	//ê³µ ì¶”ê°€ Item
 			{
 				newballs++;
 			}
 		}
 	}
 	LOG("end of NEw stage Bricks SetUp",0)
-	LOG("New Balls ¸¸Å­ Ãß°¡",0)
+	LOG("New Balls ë§Œí¼ ì¶”ê°€",0)
 	
-	//¹İº¹¹®À» ÀÌ¿ëÇÏ¿© °øÀ» newballs°³¼ö ¸¸Å­ Ãß°¡
+	//ë°˜ë³µë¬¸ì„ ì´ìš©í•˜ì—¬ ê³µì„ newballsê°œìˆ˜ ë§Œí¼ ì¶”ê°€
 	for(int k=0;k<newballs;k++)
 	{
 		Ball newball=Ball(group_x);
 		balls.push_back(newball); 
 	}
-	LOG("°ø Ãß°¡ ³¡",0)
+	LOG("ê³µ ì¶”ê°€ ë",0)
 	
 	numofballs+=newballs;
 	leftballs+=newballs;
 	//add new lines
-	LOG("»õ ÁÙ Ãß°¡",0)
-	//¹®Á¦ ¹ß»ı!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+	LOG("ìƒˆ ì¤„ ì¶”ê°€",0)
+	//ë¬¸ì œ ë°œìƒ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 	int seed=(int)log10(level);
-	LOG("log10 È£Ãâ³¡",0) 
+	LOG("log10 í˜¸ì¶œë",0) 
 	for(int i=0;i<BLOCK_COLUMNS;i++)
 	{
 		if(rand()%seed)
@@ -422,36 +422,36 @@ void NewStage()		//»õ·Î¿î ½ºÅ×ÀÌÁö ÁøÀÔ
 		}
 		else if(!rand()%BLOCK_COLUMNS)
 		{
-			blocks[i][0]=BLOCK_ADDBALL;	//°ø Ãß°¡ Item 
+			blocks[i][0]=BLOCK_ADDBALL;	//ê³µ ì¶”ê°€ Item 
 		}
-		LOG("»õ ÁÙ Ãß°¡Áß",blocks[i][0])
+		LOG("ìƒˆ ì¤„ ì¶”ê°€ì¤‘",blocks[i][0])
 	}
-	LOG("»õ ÁÙ Ãß°¡ ³¡",0) 
+	LOG("ìƒˆ ì¤„ ì¶”ê°€ ë",0) 
 	bReadyShoot=FALSE;
 }
 
-void ShootBalls(double _dx,double _dy)	//wndproc¿¡¼­ ¸¶¿ì½º ¾÷ ¶§ È£ÃâµÊ 
+void ShootBalls(double _dx,double _dy)	//wndprocì—ì„œ ë§ˆìš°ìŠ¤ ì—… ë•Œ í˜¸ì¶œë¨ 
 {
 	if(_dy<=0)return; 
 	//leader=NULL;
 	state=SIMULATING;
-	bFlying=TRUE;					//½Ã¹Ä·¹ÀÌÆ® Áß 
+	bFlying=TRUE;					//ì‹œë®¬ë ˆì´íŠ¸ ì¤‘ 
 	leftballs=numofballs;
-	//dx,dy¸¦ Normalize()
-	//ÇÈ¼¿ ´ÜÀ§
+	//dx,dyë¥¼ Normalize()
+	//í”½ì…€ ë‹¨ìœ„
 	double size=sqrt(_dx*_dx+_dy*_dy);
 	if(size<=0)
 	{
 		//error();
-		//¹ß»çÇÏÁö ¾ÊÀ½ 
+		//ë°œì‚¬í•˜ì§€ ì•ŠìŒ 
 		return;
 	}
 	_dx/=size;
 	_dy/=size;
 	_dx*=10;//_dx*=Qsqrt(level);
 	_dy*=10;//_dy*=Qsqrt(level);
-	//Å¸ÀÌ¸Ó ÁÖ±â¸¦ ¹Ù²Ü±î? 
-	//¸ğµç °øÀÇ dx,dy ¼¼Æ®ÇÔ.
+	//íƒ€ì´ë¨¸ ì£¼ê¸°ë¥¼ ë°”ê¿€ê¹Œ? 
+	//ëª¨ë“  ê³µì˜ dx,dy ì„¸íŠ¸í•¨.
 	//vector<Ball>::iterator first,last,i;
 	//first=balls.begin();
 	//last=balls.end();
@@ -462,7 +462,7 @@ void ShootBalls(double _dx,double _dy)	//wndproc¿¡¼­ ¸¶¿ì½º ¾÷ ¶§ È£ÃâµÊ
 	}
 }
 
-//¸Å Tick¸¶´Ù È£ÃâµÊ
+//ë§¤ Tickë§ˆë‹¤ í˜¸ì¶œë¨
 void GameLoop()
 {
 	RECT ballnumrect;
@@ -473,59 +473,59 @@ void GameLoop()
     }
     hBufferDC=CreateCompatibleDC(hdc);
     HBITMAP OldBit=(HBITMAP)SelectObject(hBufferDC,g_buffer);
-    //¹è°æ»ö 
+    //ë°°ê²½ìƒ‰ 
     FillRect(hBufferDC,&crt,(HBRUSH)GetStockObject(WHITE_BRUSH));
-    //ÀÌÁ¦ ±×¸°´Ù. 
-    //º®µ¹À» ±×¸°´Ù.
+    //ì´ì œ ê·¸ë¦°ë‹¤. 
+    //ë²½ëŒì„ ê·¸ë¦°ë‹¤.
 	DrawBricks(hBufferDC);
 	SetRect(&ballnumrect,leader.x,leader.y,leader.x+20,leader.y+10);
-	//°ø ±×¸®±â¸¦ ÁØºñÇÏ±â À§ÇØ ¿©·¯ °¡Áö ÀÏµéÀ» ÇÑ´Ù. 
-	if(bFlying&&state==SIMULATING)	//°øÀÌ ÀÌµ¿ÁßÀÌ¶ó¸é
+	//ê³µ ê·¸ë¦¬ê¸°ë¥¼ ì¤€ë¹„í•˜ê¸° ìœ„í•´ ì—¬ëŸ¬ ê°€ì§€ ì¼ë“¤ì„ í•œë‹¤. 
+	if(bFlying&&state==SIMULATING)	//ê³µì´ ì´ë™ì¤‘ì´ë¼ë©´
 	{
-		//¸ğµÎ ¶¥¿¡ ¶³¾îÁ³´ÂÁö ÆÇ´ÜÇÏ±â À§ÇØ ÀÏ´ÜÀº ÇØ µĞ´Ù.
+		//ëª¨ë‘ ë•…ì— ë–¨ì–´ì¡ŒëŠ”ì§€ íŒë‹¨í•˜ê¸° ìœ„í•´ ì¼ë‹¨ì€ í•´ ë‘”ë‹¤.
 		bFlying=FALSE;
 		vector<Ball>::iterator first,last,i;
 		first=balls.begin();
 		last=balls.end();
-		for(i=first;i!=last;i++)	//¸ğµç °øÀ» ¼øÈ¸ÇÏ¸é¼­ 
+		for(i=first;i!=last;i++)	//ëª¨ë“  ê³µì„ ìˆœíšŒí•˜ë©´ì„œ 
 		{
-			//°øÀÇ »óÅÂ ¾÷µ¥ÀÌÆ®
+			//ê³µì˜ ìƒíƒœ ì—…ë°ì´íŠ¸
 			Ball now=*i;
-			//¿ì¼± °øÀÌ °¡¸¸È÷ ÀÖÀ¸¸é ¹ß»ç½ÃÄÑÁØ´Ù.(Ã³À½¿¡¸¸)
+			//ìš°ì„  ê³µì´ ê°€ë§Œíˆ ìˆìœ¼ë©´ ë°œì‚¬ì‹œì¼œì¤€ë‹¤.(ì²˜ìŒì—ë§Œ)
 			//launchBall:
 			if(leftballs>0)
 			{
-				if((now.onGround)&&(now.inGroup)) //¹ß»ç ÀüÀÌ¶ó¸é 
+				if((now.onGround)&&(now.inGroup)) //ë°œì‚¬ ì „ì´ë¼ë©´ 
 				{
-					if(first==i)	//Ã¹ ¹øÂ° °øÀÌ¶ó¸é ¹ß»ç 
+					if(first==i)	//ì²« ë²ˆì§¸ ê³µì´ë¼ë©´ ë°œì‚¬ 
 					{
 						now.onGround=FALSE;
 						now.inGroup=FALSE;
 					}
 					else
 					{
-						Ball before=*(i-1);	//ÀÌÀü °ø
-						if(before.inGroup ==FALSE && before.onGround ==FALSE)	//ÀÌÀü °øÀÌ ¹ß»çµÇ¾úÀ¸¸é ³ªµµ ¹ß»ç 
+						Ball before=*(i-1);	//ì´ì „ ê³µ
+						if(before.inGroup ==FALSE && before.onGround ==FALSE)	//ì´ì „ ê³µì´ ë°œì‚¬ë˜ì—ˆìœ¼ë©´ ë‚˜ë„ ë°œì‚¬ 
 						{
 				 			now.inGroup =FALSE;
 				 			now.onGround =FALSE;
 						}
 					}
-					leftballs--;			//³²Àº °ø °¨¼Ò 
+					leftballs--;			//ë‚¨ì€ ê³µ ê°ì†Œ 
 			 	} 
 			}
-			//¸ğµç °øÀÌ ¹ß»ç »óÅÂ°¡ ¾÷µ¥ÀÌÆ® µÇ¾ú´Ù¸é 
-			//°øÀ» ¿òÁ÷ÀÎ´Ù.
-			//Ãæµ¹ °Ë»ç¿Í Âø·ú °Ë»çµµ ÇÑ´Ù. 
+			//ëª¨ë“  ê³µì´ ë°œì‚¬ ìƒíƒœê°€ ì—…ë°ì´íŠ¸ ë˜ì—ˆë‹¤ë©´ 
+			//ê³µì„ ì›€ì§ì¸ë‹¤.
+			//ì¶©ëŒ ê²€ì‚¬ì™€ ì°©ë¥™ ê²€ì‚¬ë„ í•œë‹¤. 
 			now.Move();
-			//¶¥¿¡ ¶³¾îÁø °Í °Ë»ç
+			//ë•…ì— ë–¨ì–´ì§„ ê²ƒ ê²€ì‚¬
 			
-			//°¢ °øÀ» ±×¸°´Ù.(´õºí ¹öÆÛ¿¡)
-			//°øÀ» ±×¸°´Ù. 
+			//ê° ê³µì„ ê·¸ë¦°ë‹¤.(ë”ë¸” ë²„í¼ì—)
+			//ê³µì„ ê·¸ë¦°ë‹¤. 
 			//DrawBalls(hBufferDC); 
 	
 		}
-		//±×·ì¿¡ ³²¾Æ ÀÖ´Â °øÀ» ±×¸°´Ù.
+		//ê·¸ë£¹ì— ë‚¨ì•„ ìˆëŠ” ê³µì„ ê·¸ë¦°ë‹¤.
 		if(leftballs>0)
 		{
 			char _tmp[32];
@@ -538,18 +538,18 @@ void GameLoop()
 			SelectObject(hdc,Old);
 		}		 
 	 } 
-	//¸¶¹«¸®
+	//ë§ˆë¬´ë¦¬
 	SelectObject(hBufferDC,OldBit);
     DeleteDC(hBufferDC);
     ReleaseDC(g_hwnd,hdc); 
     InvalidateRect(g_hwnd,NULL,FALSE);
-	//°ÔÀÓÀÌ ³Ê¹« »¡¸® µ¹¾Æ°¡´Â °Í ¹æÁö..?
+	//ê²Œì„ì´ ë„ˆë¬´ ë¹¨ë¦¬ ëŒì•„ê°€ëŠ” ê²ƒ ë°©ì§€..?
 	//WaitForSingleObject(handle,Milisec); 
  } 
  
 void Ball::Move()
 {
-	if((!inGroup)&&state==SIMULATING)	//¹ß»çµÈ °ø ÀÌ¶ó¸é 
+	if((!inGroup)&&state==SIMULATING)	//ë°œì‚¬ëœ ê³µ ì´ë¼ë©´ 
 	{
 		int nx=x+dx;
 		int ny=y+dy;
@@ -577,7 +577,7 @@ void DrawBricks(HDC hdc)
 	{
 		for(int j=0;j<BLOCK_COLUMNS;j++)
 		{
-			if(ISBLOCK(blocks[j][i]))		//BLOCKÀÌ¸é 
+			if(ISBLOCK(blocks[j][i]))		//BLOCKì´ë©´ 
 			{
 				int sx=j*BLOCK_SIZE_X+(j+1)*BLOCK_MARGIN_X;
 				int sy=i*BLOCK_SIZE_Y+(i+1)*BLOCK_MARGIN_Y;
@@ -589,20 +589,20 @@ void DrawBricks(HDC hdc)
 				else
 					br=CarrotBrush;
 				FillRect(hdc,&blockRect,br);
-				//±Û¾¾ Ãâ·Â 
+				//ê¸€ì”¨ ì¶œë ¥ 
 				SetBkMode(hdc,TRANSPARENT);
 				SetTextColor(hdc,RGB(0xFF,0xFF,0xFF));
 				char _tmp[16];
 				ltoa(blocks[j][i],_tmp,10);
 				DrawText(hdc,_tmp,strlen(_tmp),&blockRect,DT_CENTER|DT_VCENTER);
 			}
-			else if(ISBALLITEM(blocks[j][i]))	//°ø Ãß°¡ ItemÀÌ¸é 
+			else if(ISBALLITEM(blocks[j][i]))	//ê³µ ì¶”ê°€ Itemì´ë©´ 
 			{
 				int sx=j*BLOCK_SIZE_X+(j+1)*BLOCK_MARGIN_X+BLOCK_SIZE_X/2-BALL_RADIUS;
 				int sy=i*BLOCK_SIZE_Y+(i+1)*BLOCK_MARGIN_Y+BLOCK_SIZE_Y/2-BALL_RADIUS;
 				int ex=sx+BALL_RADIUS;
 				int ey=sy+BALL_RADIUS;
-				//°øÀ» ±×¸².
+				//ê³µì„ ê·¸ë¦¼.
 				Old=SelectObject(hdc,GreenBrush); 
 				Ellipse(hdc,sx,sy,ex,ey);
 				SelectObject(hdc,Old);
@@ -622,7 +622,7 @@ void GameOver()
 	state=GAMEOVER;
 }
 
-//ÃâÃ³: wikipedia 
+//ì¶œì²˜: wikipedia 
 float Qsqrt( float number )
 {
 	long i;
@@ -647,13 +647,13 @@ BOOL RectContains(RECT *rect,int x,int y)
 //
 //VOID CALLBACK Render(HWND hwnd,UINT uMsg, UINT iEvent, DWORD dwTime)
 //{
-//	//´õºí ¹öÆÛ ½º¿ÍÇÎ
+//	//ë”ë¸” ë²„í¼ ìŠ¤ì™€í•‘
 //	
 //}
 
 BOOL AskQuit()
 {
-	return MessageBox(g_hwnd,TEXT("Á¾·áÇÏ½Ã°Ú½À´Ï±î?"),TEXT("Á¾·á"),MB_YESNO|MB_ICONASTERISK)==MB_OK;
+	return MessageBox(g_hwnd,TEXT("ì¢…ë£Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?"),TEXT("ì¢…ë£Œ"),MB_YESNO|MB_ICONASTERISK)==MB_OK;
 }
 
 void DrawBitmap(HDC hdc,int x,int y,HBITMAP hBit)
@@ -682,9 +682,9 @@ void CleanUp()
 	vector<Ball>::iterator first,last,i;
 	first=balls.begin();
 	last=balls.end();
-	//for(i=first;i!=last;i++)	//¸ğµç °øÀ» ¼øÈ¸ÇÏ¸é¼­ 
+	//for(i=first;i!=last;i++)	//ëª¨ë“  ê³µì„ ìˆœíšŒí•˜ë©´ì„œ 
 	//{
-	//	delete *i;				//°ø »èÁ¦
+	//	delete *i;				//ê³µ ì‚­ì œ
 	//	*i=NULL; 
 	//}
 }

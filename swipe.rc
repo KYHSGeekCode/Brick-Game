@@ -66,8 +66,8 @@ IDB_MANDOWN             BITMAP  DISCARDABLE     "mandown.bmp"
 // WAVE
 //
 
-IDR_MOVE                WAVE    DISCARDABLE     "»•¿⁄¿Ãµø.wav"
-IDR_WITHPACK            WAVE    DISCARDABLE     "¡¸π–±‚.wav"
+IDR_MOVE                WAVE    DISCARDABLE     "ÌòºÏûêÏù¥Îèô.wav"
+IDR_WITHPACK            WAVE    DISCARDABLE     "ÏßêÎ∞ÄÍ∏∞.wav"
 #endif    // Korean resources
 /////////////////////////////////////////////////////////////////////////////
 

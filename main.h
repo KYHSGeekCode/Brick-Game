@@ -84,11 +84,11 @@ class Ball
 };
 
 //prototypes
-void InitGame();    //¿ÏÀü Ã³À½ ½ÃÀÛÇÒ ¶§
+void InitGame();    //ì™„ì „ ì²˜ìŒ ì‹œì‘í•  ë•Œ
 void GameOver();
-void NewStage();		//»õ·Î¿î ½ºÅ×ÀÌÁö ÁøÀÔ
-void ShootBalls(double _dx,double _dy);	//wndproc¿¡¼­ ¸¶¿ì½º ¾÷ ¶§ È£ÃâµÊ
-//¸Å Tick¸¶´Ù È£ÃâµÊ
+void NewStage();		//ìƒˆë¡œìš´ ìŠ¤í…Œì´ì§€ ì§„ì…
+void ShootBalls(double _dx,double _dy);	//wndprocì—ì„œ ë§ˆìš°ìŠ¤ ì—… ë•Œ í˜¸ì¶œë¨
+//ë§¤ Tickë§ˆë‹¤ í˜¸ì¶œë¨
 void GameLoop();
 //VOID CALLBACK Render(HWND hwnd,UINT uMsg, UINT iEvent, DWORD dwTime);
 BOOL AskQuit();
@@ -98,7 +98,7 @@ void CleanUp();
 void DrawBitmap(HDC hdc,int x,int y,HBITMAP hBit);
 
 BOOL RectContains(RECT *rect,int x,int y);
-//ÃâÃ³: wikipedia 
+//ì¶œì²˜: wikipedia 
 float Qsqrt( float number );
 
 #endif
